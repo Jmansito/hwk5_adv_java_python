@@ -26,22 +26,11 @@ def is_palindrome(number):
 
 
 def compute_variance(*args):
-    total = 0
     standard_dev = 0
-    count = len(args)
-    for arg in args:
-        total += arg
-    mean = total / count
+    mean = sum(args) / (len(args))
     for arg in args:
         standard_dev += pow((arg - mean), 2)
-    variance = (1 / (count - 1)) * standard_dev
-    return variance
-
-
-    # mean = sum(args) / len(args)
-    # standard_dev = [(x - mean) ** 2 for x in args]
-    # variance = sum(standard_dev)
-    # return variance**(1/2)
+    return (1 / ((len(args)) - 1)) * standard_dev
 
 # compute variance req requires two arguments
 # Does the same as compute_variance
@@ -51,25 +40,23 @@ def compute_variance_req(arg1, arg2, *args):
     args = list(args)
     args.append(arg1)
     args.append(arg2)
-    total = 0
-    count = len(args)
     standard_dev = 0
-    for arg in args:
-        total += arg
-    mean = total / count
+    mean = sum(args) / (len(args))
     for arg in args:
         standard_dev += pow((arg - mean), 2)
-    variance = (1 / (count - 1)) * standard_dev
-    return variance
-
-    # mean = (sum(args) + arg) / len(args) + 1
-    # standard_dev = [(x - mean) ** 2 for x in args]
-    # standard_dev += (arg - mean) ** 2
-    # return sum(standard_dev) / len(args) + 1
+    return (1 / ((len(args)) - 1)) * standard_dev
 
 
-def compute_change_few_coins(payment):
-    change = "placeholder"
+def compute_change_few_coins(amount):
+    change = []
+    money = [1, 0.25, 0.10, 0.05, 0.01]
+    counter = 0
+    for x in money:
+        while amount >= x:
+            counter += 1
+            amount -= x
+        change.append(counter)
+        counter = 0
     return change
 
 
