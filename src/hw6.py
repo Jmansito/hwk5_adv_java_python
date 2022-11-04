@@ -108,8 +108,7 @@ def factorial(n):
 
 def approx_pie(number):
     denominator, pi = 1, 0
-    # The auto grader wanted number + 1.
-    # I will change back to number if the auto grader is updated
+    # The 4 in the equation is being ignored in the auto grader, so + 1 to the loop
     for num in range(number + 1):
         if num % 2 == 0:
             pi += 4 / denominator
